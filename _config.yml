@@ -5,3 +5,4 @@ google_analytics:
 theme: jekyll-theme-slate
 collections:
   solutions:
+    output: true

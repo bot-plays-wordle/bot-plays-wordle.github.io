@@ -3,3 +3,5 @@ description: Bot plays famous Wordle game. Daily Youtube uploads and solution br
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-slate
+collections:
+  solutions:

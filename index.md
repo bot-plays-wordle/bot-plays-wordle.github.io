@@ -18,13 +18,8 @@ All the videos are available on [Youtube](https://www.youtube.com/channel/UCHExv
 
 ## Breakdowns
 
-Also you can refer to breakdowns of previous days solutions:
-
-{% assign solutions = site.solutions | sort: 'date' | reverse %}
-{% for solution in solutions %}
-<a href="{{ solution.url }}">{{ solution.title }}</a>
-{% endfor %}
+{% include breakdowns.html %}
 
 ## Statistics
 
-Will be published layer once there is more data - stay tuned!
+{% include statistics.html %}

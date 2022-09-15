@@ -1,0 +1,43 @@
+{% assign solve1 = 0 %}
+{% assign solve2 = 0 %}
+{% assign solve3 = 0 %}
+{% assign solve4 = 0 %}
+{% assign solve5 = 0 %}
+{% assign solve6 = 0 %}
+{% assign unsolved = 0 %}
+{% assign total = 0 %}
+{% for solution in site.solutions %}
+{% if solution.solved == true %}
+{% assign total = total | plus: solution.attempts %}
+{% endif %}
+{% if solution.solved != true %}
+{% assign unsolved = unsolved | plus: 1 %}
+{% elsif solution.attempts == 1 %}
+{% assign solve1 = solve1 | plus: 1 %}
+{% elsif solution.attempts == 2 %}
+{% assign solve2 = solve2 | plus: 1 %}
+{% elsif solution.attempts == 3 %}
+{% assign solve3 = solve3 | plus: 1 %}
+{% elsif solution.attempts == 4 %}
+{% assign solve4 = solve4 | plus: 1 %}
+{% elsif solution.attempts == 5 %}
+{% assign solve5 = solve5 | plus: 1 %}
+{% elsif solution.attempts == 6 %}
+{% assign solve6 = solve6 | plus: 1 %}
+{% endif%} 
+{% endfor %}
+{% assign count = solve1 |plus: solve2 | plus: solve3 | plus: solve4 | plus: solve5 | plus: solve6 %}
+Here is the statistic how the bot performs.
+
+Guess distribution after <strong>{{ count }}</strong> games:
+<table style="width: 100%">
+<tr><td style="width: 20%">1 attempt</td><td style="width:80%"><div style="height: 20px; width: {{solve1 | times: 100.0 | divided_by: count | floor | plus: 2 }}%; background-color: #6aaa64;"></div></td></tr>
+<tr><td>2 attempts</td><td><div style="height: 20px; width: {{solve2 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #6aaa64;"></div></td></tr>
+<tr><td>3 attempts</td><td><div style="height: 20px; width: {{solve3 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #c9b458;"></div></td></tr>
+<tr><td>4 attempts</td><td><div style="height: 20px; width: {{solve4 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #c9b458;"></div></td></tr>
+<tr><td>5 attempts</td><td><div style="height: 20px; width: {{solve5 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #86888a;"></div></td></tr>
+<tr><td>6 attempts</td><td><div style="height: 20px; width: {{solve6 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #86888a;"></div></td></tr>
+<tr><td>Unsolved</td><td><div style="height: 20px; width: {{unsolved | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #f5793a;"></div></td></tr>
+</table>
+
+In average it takes <strong>{{ total | times: 1.0 | divided_by: count}}</strong> attempts for a successful solve.

@@ -2,5 +2,5 @@ Also you can refer to breakdowns of previous days solutions:
 
 {% assign solutions = site.solutions | sort: 'date' | reverse %}
 {% for solution in solutions %}
-<a href="{{ solution.url }}">{{ solution.title }}</a> - {% if solution.solved == true %}solved with {{ solution.attempts}} guesses{% else %}<strong>failed to solve</strong>{% endif %}. <a href="{{ solution.video_link }}">Video</a>
+<a href="{{ solution.url }}">{{ solution.title }}</a> - {% if solution.solved == true %}solved with <strong>{{ solution.attempts}}</strong> guesses{% else %}<strong>failed to solve</strong>{% endif %}. <a href="{{ solution.video_link }}">Video</a>
 {% endfor %}

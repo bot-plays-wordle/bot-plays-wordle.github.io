@@ -26,7 +26,7 @@
 {% assign solve6 = solve6 | plus: 1 %}
 {% endif%} 
 {% endfor %}
-{% assign count = solve1 |plus: solve2 | plus: solve3 | plus: solve4 | plus: solve5 | plus: solve6 %}
+{% assign count = solve1 |plus: solve2 | plus: solve3 | plus: solve4 | plus: solve5 | plus: solve6 | plus: unsolved %}
 Here is the statistic how the bot performs.
 
 Guess distribution after <strong>{{ count }}</strong> games:
@@ -40,4 +40,7 @@ Guess distribution after <strong>{{ count }}</strong> games:
 <tr><td>Unsolved</td><td><div style="height: 20px; width: {{unsolved | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #f5793a;"></div></td></tr>
 </table>
 
-In average it takes <strong>{{ total | times: 1.0 | divided_by: count}}</strong> attempts for a successful solve.
+{% assign successes = count | minus: unsolved %}
+In average it takes <strong>{{ total | times: 1.0 | divided_by: successes }}</strong> attempts for a successful solve.
+
+<strong>{{ unsolved }}</strong> time{% if unsolved > 1 %}s{% endif %} out of <strong>{{ count }}</strong> ({{ unsolved | times: 100.0 | divided_by: count }}%) bot failed to guess the word.

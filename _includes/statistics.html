@@ -41,6 +41,6 @@ Guess distribution after <strong>{{ count }}</strong> games:
 </table>
 
 {% assign successes = count | minus: unsolved %}
-In average it takes <strong>{{ total | times: 1.0 | divided_by: successes }}</strong> attempts for a successful solve.
+In average it takes <strong>{{ total | times: 1.0 | divided_by: successes | round: 2}}</strong> attempts for a successful solve.
 
-<strong>{{ unsolved }}</strong> time{% if unsolved > 1 %}s{% endif %} out of <strong>{{ count }}</strong> ({{ unsolved | times: 100.0 | divided_by: count }}%) bot failed to guess the word.
+<strong>{{ unsolved }}</strong> time{% if unsolved > 1 %}s{% endif %} out of <strong>{{ count }}</strong> ({{ unsolved | times: 100.0 | divided_by: count | round: 2 }}%) bot failed to guess the word.

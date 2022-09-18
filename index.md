@@ -10,6 +10,10 @@ Have you ever played [Wordle](https://www.nytimes.com/games/wordle/index.html)? 
 
 On this site a bot is playing Wordle game and tries to guess daily word.
 
+# How it works?
+
+Do you want to know how the bot manages to solve the puzzle? Check out "[How it works](how_it_works.html)" page for more details.
+
 ## Videos and Recordings 
 
 All the videos are available on [Youtube](https://www.youtube.com/channel/UCHExvm1R3a7NFk5K89jUg7Q) channel - like and subscribe for daily updates.

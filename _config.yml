@@ -6,3 +6,5 @@ theme: jekyll-theme-slate
 collections:
   solutions:
     output: true
+plugins:
+  - jekyll-sitemap

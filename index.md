@@ -12,7 +12,9 @@ On this site a bot is playing Wordle game and tries to guess daily word.
 
 # How it works?
 
-Do you want to know how the bot manages to solve the puzzle? Check out "[How it works](how_it_works.html)" page for more details.
+The bot is not cheating but rather uses some weird logics to do every move.
+
+Do you want to know how it manages to solve the puzzle? Check out "[How it works](how_it_works.html)" page for more details.
 
 ## Videos and Recordings 
 

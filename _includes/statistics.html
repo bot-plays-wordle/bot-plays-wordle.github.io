@@ -27,6 +27,14 @@
 {% endif%} 
 {% endfor %}
 {% assign count = solve1 |plus: solve2 | plus: solve3 | plus: solve4 | plus: solve5 | plus: solve6 | plus: unsolved %}
+{% assign winningStreak = 0 %}
+{% assign solutions = site.solutions | sort: 'date' | reverse %}
+{% for solution in solutions %}
+{% if solution.solved != true %}
+{% break %}
+{% endif %}
+{% assign winningStreak = winningStreak | plus: 1 %}
+{% endfor %}
 Here is the statistic how the bot performs.
 
 Guess distribution after <strong>{{ count }}</strong> games:
@@ -44,3 +52,7 @@ Guess distribution after <strong>{{ count }}</strong> games:
 In average it takes <strong>{{ total | times: 1.0 | divided_by: successes | round: 2}}</strong> attempts for a successful solve.
 
 <strong>{{ unsolved }}</strong> time{% if unsolved > 1 %}s{% endif %} out of <strong>{{ count }}</strong> ({{ unsolved | times: 100.0 | divided_by: count | round: 2 }}%) bot failed to guess the word.
+
+Win rate: <strong>{{ count | minus: unsolved | times: 100.0 | divided_by: count | round: 2 }}%</strong>
+
+Current winning streak: <strong>{{ winningStreak }}</strong>

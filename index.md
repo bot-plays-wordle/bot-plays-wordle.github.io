@@ -22,10 +22,14 @@ All the videos are available on [Youtube](https://www.youtube.com/channel/UCHExv
 
 <div class="g-ytsubscribe" data-channelid="UCHExvm1R3a7NFk5K89jUg7Q" data-layout="full" data-count="default"></div>
 
-## Breakdowns
+## Solutions
 
-{% include breakdowns.html %}
+{% include solutions.html %}
 
 ## Statistics
 
 {% include statistics.html %}
+
+## Contact and support
+
+{% include support.html %}

@@ -1,8 +1,6 @@
 ---
-layout: default
+layout: sub-page
 ---
-<a href="/">Back</a>
-
 # How it works?
 
 Let's take a look how the bot works internally and how it manages to solve the Wordle.

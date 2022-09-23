@@ -1,6 +1,32 @@
 ---
 layout: sub-page
 ---
+
+{% assign solutions = site.solutions | sort: 'date' %}
+{% assign index = 0 %}
+{% for solution in solutions %}
+    {% if solution.date == page.date %}
+        {% assign index = forloop.index %}
+    {% endif %}
+{% endfor %}
+{% assign nextIndex = index | plus: 1 %}
+{% assign prevIndex = index | minus: 1 %}
+{% for solution in solutions %}
+    {% if forloop.index == prevIndex %}
+        {% assign prev = solution %}
+    {% endif %}
+    {% if forloop.index == nextIndex %}
+        {% assign next = solution %}
+    {% endif %}
+{% endfor %}
+
+<hr/>
+<div>
+    {% if next %}<div style="float:right;"><a href="{{ next.url }}">Next day solution >></a></div>{% endif %}
+    {% if prev %}<div><a href="{{ prev.url }}">&lt;&lt; Previous day solution</a></div>{% endif %}
+</div>
+<hr/>
+
 {{ content }}
 
 <h2>Video</h2>

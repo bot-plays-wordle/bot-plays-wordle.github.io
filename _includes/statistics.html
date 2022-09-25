@@ -35,6 +35,16 @@
 {% endif %}
 {% assign winningStreak = winningStreak | plus: 1 %}
 {% endfor %}
+{% assign maxStreak = 0 %}
+{% assign currentStreak = 0%}
+{% for solution in solutions %}
+{% if solution.solved != true %}
+{% if currentStreak > maxStreak %}{% assign maxStreak = currentStreak %}{% endif %}
+{% assign currentStreak = 0 %}
+{% else %}
+{% assign currentStreak = currentStreak | plus: 1 %}
+{% endif %}
+{% endfor %}
 Here is the statistic how the bot performs.
 
 Guess distribution after <strong>{{ count }}</strong> games:
@@ -56,3 +66,5 @@ In average it takes <strong>{{ total | times: 1.0 | divided_by: successes | roun
 Win rate: <strong>{{ count | minus: unsolved | times: 100.0 | divided_by: count | round: 2 }}%</strong>
 
 Current winning streak: <strong>{{ winningStreak }}</strong>
+
+Longest winning streak: <strong>{{ maxStreak }}</strong>

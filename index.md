@@ -16,7 +16,10 @@ Learn more [about](about.html) the project.
 
 The bot is not cheating but rather uses some weird logics to do every move. Also it is playing in so called "Hard mode" where all revealed hints must be used in subsequent guesses. That makes bot's life even more complex!
 
-Do you want to know how it manages to solve the puzzle? Check out "[How it works](how_it_works.html)" page for more details. Or are you interested mostly in technical details? If so - [here](tech_details.html) you can find the answers.
+Do you want to know how it manages to solve the puzzle? Check out "[How it works](how_it_works.html)" page for more details. 
+<!--
+Or are you interested mostly in technical details? If so - [here](tech_details.html) you can find the answers.
+-->
 
 ## Videos and Recordings 
 

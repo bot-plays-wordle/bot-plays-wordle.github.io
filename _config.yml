@@ -8,3 +8,8 @@ collections:
     output: true
 plugins:
   - jekyll-sitemap
+  - jekyll-minifier
+  - jekyll-spaceship
+jekyll-spaceship:
+  processors:
+    - mermaid-processor

@@ -66,11 +66,9 @@ Right now I see the project as almost complete. Few things I would like to impor
 
 All the rest seem to be working fine and I'm really happy with the results.
 
-<!-- 
 ## But how it technically works?
 
-Probably you are still wondering how it works internally? If so - please check out [technical details](tech_details) page. Hope you will get your answers there. 
--->
+Probably you are still wondering how it works internally? If so - please check out [technical details](tech_details.html) page. Hope you will get your answers there. 
 
 ## Supporting the project
 

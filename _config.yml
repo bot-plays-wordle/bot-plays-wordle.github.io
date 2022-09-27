@@ -3,13 +3,15 @@ description: Bot plays famous Wordle game. Daily Youtube uploads and solution br
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-slate
+url: https://www.botplayswordle.com
 collections:
   solutions:
     output: true
 plugins:
   - jekyll-sitemap
   - jekyll-minifier
-  - jekyll-spaceship
-jekyll-spaceship:
-  processors:
-    - mermaid-processor
+  - jekyll-feed
+feed:
+  collections:
+    solutions:
+      path: /feed.atom

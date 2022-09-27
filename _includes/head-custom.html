@@ -15,6 +15,9 @@
 <!-- You can set your favicon here -->
 <!-- link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" -->
 <script async src="https://apis.google.com/js/platform.js"></script>
+{% if page.mermaid %}
+{% include mermaid.html %}
+{% endif %}
 <style>
     .ratio {
   position: relative;
@@ -47,6 +50,18 @@
 
 .ratio-21x9 {
   --bs-aspect-ratio: calc(9 / 21 * 100%);
+}
+
+.fa {
+  padding: 5px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+.fa:hover {
+  opacity: 0.7;
+  text-decoration: none;
 }
 </style>
 <!-- end custom head snippets -->

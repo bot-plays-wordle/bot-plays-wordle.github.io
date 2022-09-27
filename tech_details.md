@@ -1,5 +1,6 @@
 ---
 layout: sub-page
+mermaid: true
 ---
 # How it technically works
 
@@ -24,7 +25,7 @@ First of all it is important to understand what it takes bot to produce the solu
 
 The whole flow can be easily represented with several steps:
 
-```mermaid!
+```mermaid
 flowchart LR
     %% define nodes
     Start[Nightly job]
@@ -55,7 +56,7 @@ Basically the bot opens a browser and runs the solution session using `puppeteer
 In parallel the application runs a screen recording using `puppeteer-screen-recorder` module - it will give us a video file.
 
 This can be depicted as following diagram:
-```mermaid!
+```mermaid
 flowchart LR
     Start[Nightly job]
     Solve[Solve the puzzle]
@@ -101,7 +102,7 @@ And finally using `ffmpeg` we can merge videos together ("welcome", main and "th
 
 Now let's take a look at the diagram of this step:
 
-```mermaid!
+```mermaid
 flowchart TD
     SolutionOriginalVideo[Screen recording]
     SolutionVoiceoverTranscript[Voiceover transcript]
@@ -133,7 +134,7 @@ When we come to this step we are done with video processing and ready for Youtub
 
 The process is really simple:
 
-```mermaid!
+```mermaid
 flowchart LR
     FinalVideo[Final video]
     YoutubeUploader[Youtube video uploader]
@@ -153,7 +154,7 @@ The output of this step is a link to uploaded video - we will need it to put int
 
 Once the link to Youtube video is know it should be injected into solution's transcript.
 
-```mermaid!
+```mermaid
 flowchart LR
     SolutionTranscript[Solution transcript]
     VideoLink[Link to the video]
@@ -175,7 +176,7 @@ After it the transcript is ready and we can publish the results.
 
 The site is built using `jekyll` site generator engine. As input it requires set of markdown files and staic assets. Output is HTML/JavaScript/CSS package that can be deployed.
 
-```mermaid!
+```mermaid
 flowchart LR
     SiteRepository[Repository]
     GithubAction[Github Actions]
@@ -200,5 +201,5 @@ flowchart LR
 
 The site is hosted using [Github pages](https://pages.github.com/) that comes for free as well (as all other components used for this project). It has certain limits (like 100GB traffic per month), but for the time being it is sufficient.
 
-In addition for nice looking domain name I bought [botplayswordle.com](https://www.botplayswordle.com) from [GoDaddy](https://www.godaddy.com).
+In addition to have nice looking domain name I bought [botplayswordle.com](https://www.botplayswordle.com) from [GoDaddy](https://www.godaddy.com).
 

@@ -22,8 +22,8 @@ layout: sub-page
 
 <hr/>
 <div>
-    {% if next %}<div style="float:right;"><a href="{{ next.url }}">Next day solution >></a></div>{% endif %}
-    {% if prev %}<div><a href="{{ prev.url }}">&lt;&lt; Previous day solution</a></div>{% endif %}
+    {% if next %}<div style="float:right;"><a href="{{ next.url }}">Next day solution #{{ next.wordle_id }}>></a></div>{% endif %}
+    {% if prev %}<div><a href="{{ prev.url }}">&lt;&lt; Previous day solution #{{ prev.wordle_id }}</a></div>{% endif %}
 </div>
 <hr/>
 

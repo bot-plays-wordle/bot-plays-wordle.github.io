@@ -49,13 +49,13 @@ Here is the statistic how the bot performs.
 
 Guess distribution after <strong>{{ count }}</strong> games:
 <table style="width: 100%">
-<tr><td style="width: 20%">1 attempt</td><td style="width:80%"><div style="height: 20px; width: {{solve1 | times: 100.0 | divided_by: count | floor | plus: 2 }}%; background-color: #6aaa64;"></div></td></tr>
-<tr><td>2 attempts</td><td><div style="height: 20px; width: {{solve2 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #6aaa64;"></div></td></tr>
-<tr><td>3 attempts</td><td><div style="height: 20px; width: {{solve3 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #c9b458;"></div></td></tr>
-<tr><td>4 attempts</td><td><div style="height: 20px; width: {{solve4 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #c9b458;"></div></td></tr>
-<tr><td>5 attempts</td><td><div style="height: 20px; width: {{solve5 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #86888a;"></div></td></tr>
-<tr><td>6 attempts</td><td><div style="height: 20px; width: {{solve6 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #86888a;"></div></td></tr>
-<tr><td>Unsolved</td><td><div style="height: 20px; width: {{unsolved | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #f5793a;"></div></td></tr>
+<tr><td style="width: 20%">1 attempt</td><td style="width:80%"><div><div style="height: 20px; width: {{solve1 | times: 100.0 | divided_by: count | floor | plus: 2 }}%; background-color: #6aaa64; float: left; margin-right: 10px;"></div><div>{{ solve1 }} ({{solve1 | times: 100.0 | divided_by: count | round: 2}} %)</div></div></td></tr>
+<tr><td>2 attempts</td><td><div><div style="height: 20px; width: {{solve2 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #6aaa64; float: left; margin-right: 10px;"></div><div>{{ solve2 }} ({{solve2 | times: 100.0 | divided_by: count | round: 2}} %)</div></div></td></tr>
+<tr><td>3 attempts</td><td><div><div style="height: 20px; width: {{solve3 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #c9b458; float: left; margin-right: 10px;"></div><div>{{ solve3 }} ({{solve3 | times: 100.0 | divided_by: count | round: 2}} %)</div></div></td></tr>
+<tr><td>4 attempts</td><td><div><div style="height: 20px; width: {{solve4 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #c9b458; float: left; margin-right: 10px;"></div><div>{{ solve4 }} ({{solve4 | times: 100.0 | divided_by: count | round: 2}} %)</div></div></td></tr>
+<tr><td>5 attempts</td><td><div><div style="height: 20px; width: {{solve5 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #86888a; float: left; margin-right: 10px;"></div><div>{{ solve5 }} ({{solve5 | times: 100.0 | divided_by: count | round: 2}} %)</div></div></td></tr>
+<tr><td>6 attempts</td><td><div><div style="height: 20px; width: {{solve6 | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #86888a; float: left; margin-right: 10px;"></div><div>{{ solve6 }} ({{solve6 | times: 100.0 | divided_by: count | round: 2}} %)</div></div></td></tr>
+<tr><td>Unsolved</td><td><div><div style="height: 20px; width: {{unsolved | times: 100.0 | divided_by: count | floor | plus: 2}}%; background-color: #f5793a; float: left; margin-right: 10px;"></div><div>{{ unsolved }} ({{unsolved | times: 100.0 | divided_by: count | round: 2}} %)</div></div></td></tr>
 </table>
 
 {% assign successes = count | minus: unsolved %}

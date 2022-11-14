@@ -59,7 +59,8 @@ Guess distribution after <strong>{{ count }}</strong> games:
 </table>
 
 {% assign successes = count | minus: unsolved %}
-In average it takes <strong>{{ total | times: 1.0 | divided_by: successes | round: 2}}</strong> attempts for a successful solve.
+{% assign avg = total | times: 1.0 | divided_by: successes %}
+In average it takes <strong>{{ avg | round: 2}}</strong> attempts for a successful solve.
 
 <strong>{{ unsolved }}</strong> time{% if unsolved > 1 %}s{% endif %} out of <strong>{{ count }}</strong> ({{ unsolved | times: 100.0 | divided_by: count | round: 2 }}%) bot failed to guess the word.
 
@@ -71,7 +72,7 @@ Longest winning streak: <strong>{{ maxStreak }}</strong>
 
 Solutions over time:
 {% assign x = 20 %}
-{% assign dx = 460 | divided_by: count %}
+{% assign dx = 400 | divided_by: count %}
 {% assign sols = site.solutions | sort: 'date' %}
 <svg viewbox="0 0 500 200">
     <line x1="20" y1="40" x2="480" y2="40" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
@@ -86,6 +87,10 @@ Solutions over time:
     <text x="0" y="100">3</text>
     <text x="0" y="120">2</text>
     <text x="0" y="140">1</text>
+
+    <line x1="20" y1="{{ avg | times: -20 | plus: 160 }}" x2="480" y2="{{ avg | times: -20 | plus: 160 }}" stroke="#6aaa64" stroke-width="2"/>
+    <text x="430" y="{{ avg | times: -20 | plus: 160 | minus: 5 }}">Average</text>
+
     <polyline fill="none" stroke="#f5793a" stroke-width="2" stroke-linecap="round" points="
     {% for solution in sols %}
         {% assign y = solution.attempts | times: -20 | plus: 160 %}

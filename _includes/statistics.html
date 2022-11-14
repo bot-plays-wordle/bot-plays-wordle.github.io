@@ -72,7 +72,7 @@ Longest winning streak: <strong>{{ maxStreak }}</strong>
 
 Solutions over time:
 {% assign x = 20 %}
-{% assign dx = 400 | divided_by: count %}
+{% assign dx = 410.0 | divided_by: count %}
 {% assign sols = site.solutions | sort: 'date' %}
 <svg viewbox="0 0 500 200">
     <line x1="20" y1="40" x2="480" y2="40" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
@@ -88,16 +88,6 @@ Solutions over time:
     <text x="0" y="120">2</text>
     <text x="0" y="140">1</text>
 
-    <line x1="20" y1="{{ avg | times: -20 | plus: 160 }}" x2="480" y2="{{ avg | times: -20 | plus: 160 }}" stroke="#6aaa64" stroke-width="2"/>
-    <text x="430" y="{{ avg | times: -20 | plus: 160 | minus: 5 }}">Average</text>
-
-    <polyline fill="none" stroke="#f5793a" stroke-width="2" stroke-linecap="round" points="
-    {% for solution in sols %}
-        {% assign y = solution.attempts | times: -20 | plus: 160 %}
-        {{ x }},{{ y }}
-        {% assign x = x | plus: dx %}
-    {% endfor %}
-    " />
     {% assign x = 20 %}
     {% assign prevGroup = sols[0].date | date: "%V" %}
     {% for solution in sols %}
@@ -107,6 +97,23 @@ Solutions over time:
         <text transform="translate({{ x }}, 150) rotate(90)">{{ solution.date | date: "%e %b" }}</text>
         {% endif %}
         {% assign prevGroup = group %}
+        {% assign x = x | plus: dx %}
+    {% endfor %}
+
+    <line x1="20" y1="{{ avg | times: -20 | plus: 160 }}" x2="480" y2="{{ avg | times: -20 | plus: 160 }}" stroke="#6aaa64" stroke-width="2"/>
+    <text x="450" y="{{ avg | times: -20 | plus: 160 | minus: 5 }}">Avg</text>
+
+    {% assign x = 20 %}
+    <polyline fill="none" stroke="#f5793a" stroke-width="2" stroke-linecap="round" points="
+    {% for solution in sols %}
+        {% assign y = solution.attempts | times: -20 | plus: 160 %}
+        {{ x }},{{ y }}
+        {% assign x = x | plus: dx %}
+    {% endfor %}
+    " />
+    {% assign x = 20 %}
+    {% for solution in sols %}
+        <circle cx="{{ x }}" cy="{{ solution.attempts | times: -20 | plus: 160 }}" r="3" fill="#f5793a" />
         {% assign x = x | plus: dx %}
     {% endfor %}
 </svg>

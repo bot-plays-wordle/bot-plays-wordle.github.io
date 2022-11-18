@@ -74,46 +74,61 @@ Solutions over time:
 {% assign x = 20 %}
 {% assign dx = 410.0 | divided_by: count %}
 {% assign sols = site.solutions | sort: 'date' %}
-<svg viewbox="0 0 500 200">
-    <line x1="20" y1="40" x2="480" y2="40" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
-    <line x1="20" y1="60" x2="480" y2="60" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
-    <line x1="20" y1="80" x2="480" y2="80" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
+<svg viewbox="0 0 500 430">
     <line x1="20" y1="100" x2="480" y2="100" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
-    <line x1="20" y1="120" x2="480" y2="120" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
-    <line x1="20" y1="140" x2="480" y2="140" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
-    <text x="0" y="40">6</text>
-    <text x="0" y="60">5</text>
-    <text x="0" y="80">4</text>
-    <text x="0" y="100">3</text>
-    <text x="0" y="120">2</text>
-    <text x="0" y="140">1</text>
+    <line x1="20" y1="150" x2="480" y2="150" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="20" y1="200" x2="480" y2="200" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="20" y1="250" x2="480" y2="250" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="20" y1="300" x2="480" y2="300" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="20" y1="350" x2="480" y2="350" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
+    <text x="0" y="100">6</text>
+    <text x="0" y="150">5</text>
+    <text x="0" y="200">4</text>
+    <text x="0" y="250">3</text>
+    <text x="0" y="300">2</text>
+    <text x="0" y="350">1</text>
 
     {% assign x = 20 %}
     {% assign prevGroup = sols[0].date | date: "%V" %}
     {% for solution in sols %}
         {% assign group = solution.date | date: "%V" %}
         {% if prevGroup != group %}
-        <line x1="{{ x }}" y1="2" x2="{{ x }}" y2="140" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
-        <text transform="translate({{ x }}, 150) rotate(90)">{{ solution.date | date: "%e %b" }}</text>
+        <line x1="{{ x }}" y1="40" x2="{{ x }}" y2="350" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
+        <text transform="translate({{ x }}, 360) rotate(90)">{{ solution.date | date: "%e %b" }}</text>
         {% endif %}
         {% assign prevGroup = group %}
         {% assign x = x | plus: dx %}
     {% endfor %}
 
-    <line x1="20" y1="{{ avg | times: -20 | plus: 160 }}" x2="480" y2="{{ avg | times: -20 | plus: 160 }}" stroke="#6aaa64" stroke-width="2"/>
-    <text x="450" y="{{ avg | times: -20 | plus: 160 | minus: 5 }}">Avg</text>
+    <text x="450" y="{{ avg | times: -50 | plus: 400 | minus: 10 }}" stroke="#6aaa64">Avg</text>
+    {% assign x = 20 %}
+    {% assign sum = 0 %}
+    {% assign i = 0 %}
+    <polyline fill="none" stroke="#6aaa64" stroke-width="2" stroke-linecap="round" points="
+    {% for solution in sols %}
+        {% assign sum = sum | plus: solution.attempts %}
+        {% assign i = i | plus: 1 %}
+        {% assign y = sum | times: 1.0 | divided_by: i | times: -50 | plus: 400 %}
+        {{ x }},{{ y }}
+        {% assign x = x | plus: dx %}
+        {% if i == count %}
+        480, {{ y }}
+        {% endif %}
+    {% endfor %}
+    " />
+
 
     {% assign x = 20 %}
     <polyline fill="none" stroke="#f5793a" stroke-width="2" stroke-linecap="round" points="
     {% for solution in sols %}
-        {% assign y = solution.attempts | times: -20 | plus: 160 %}
+        {% assign y = solution.attempts | times: -50 | plus: 400 %}
         {{ x }},{{ y }}
         {% assign x = x | plus: dx %}
     {% endfor %}
     " />
     {% assign x = 20 %}
     {% for solution in sols %}
-        <circle cx="{{ x }}" cy="{{ solution.attempts | times: -20 | plus: 160 }}" r="3" fill="#f5793a" />
+        <circle cx="{{ x }}" cy="{{ solution.attempts | times: -50 | plus: 400 }}" r="3" fill="#f5793a" />
         {% assign x = x | plus: dx %}
     {% endfor %}
 </svg>

@@ -1,0 +1,74 @@
+<svg viewBox="0 0 480 350" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        svg {
+            stroke-width: 10px;
+            stroke-linecap: round;
+            fill: none;
+        }
+        .text {
+            stroke-width: 2px;
+            fill: #86888a;
+            font-size: 40pt;
+            font-family: Arial;
+        }
+        .wordleText {
+            stroke-width: 2px;
+            fill: #ffffff;
+            font-size: 40pt;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .letter {
+            fill: #c9b458;
+        }
+        .thin {
+            stroke-width: 6px;
+        }
+        .green {
+            stroke: #6aaa64;
+        }
+        .grey {
+            stroke: #86888a;
+        }
+    </style>
+    <!-- Body -->
+    <rect x="50" y="80" width="200" height="150" rx="10" class="green" />
+    <!-- Ears -->
+    <rect x="30" y="120" width="20" height="40" rx="5" class="green" />
+    <rect x="250" y="120" width="20" height="40" rx="5" class="green" />
+    <!-- Left antenna -->
+    <line x1="100" y1="80" x2="80" y2="50" class="green" />
+    <circle cx="75" cy="40" r="10" class="green"/>
+    <!-- Right antenna -->
+    <line x1="200" y1="80" x2="220" y2="50" class="green" />
+    <circle cx="225" cy="40" r="10" class="green"/>
+    <!-- Mouth -->
+    <rect x="110" y="180" width="80" height="20" rx="5" class="grey thin" />
+    <!-- Eyes -->
+    <circle cx="100" cy="130" r="20" class="grey thin"/>
+    <circle cx="105" cy="125" r="3" class="grey thin"/>
+    <circle cx="200" cy="130" r="20" class="grey thin"/>
+    <circle cx="205" cy="125" r="3" class="grey thin"/>
+    <!-- Idea -->
+    <path d="M 300,10
+    a 10 10 90 0 1 10,-10
+    l 130,0 
+    a 10 10 90 0 1 10,10
+    l 0,60
+    a 10 10 90 0 1 -10,10
+    l -100,0
+    l -30,30
+    l 0,-30
+    a 10 10 90 0 1 -10,-10
+    z
+    " class="grey" />
+    <text x="335" y="60" class="text grey">???</text>
+    <!-- Wordle -->
+    <rect x="10" y="250" width="70" height="70" class="letter" />
+    <rect x="85" y="250" width="70" height="70" class="letter" />
+    <rect x="160" y="250" width="70" height="70" class="letter" />
+    <rect x="235" y="250" width="70" height="70" class="letter" />
+    <rect x="310" y="250" width="70" height="70" class="letter" />
+    <rect x="385" y="250" width="70" height="70" class="letter" />
+    <text x="30" y="305" textLength="405" class="wordleText">WORDLE</text>
+</svg>

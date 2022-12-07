@@ -105,6 +105,7 @@ Solutions over time:
         {% assign x = x | plus: dx %}
     {% endfor %}
 
+    <!-- Average -->
     <text x="450" y="{{ avg | times: -50 | plus: 400 | minus: 10 }}" stroke="#6aaa64">Avg</text>
     {% assign x = 20 %}
     {% assign sum = 0 %}
@@ -122,7 +123,26 @@ Solutions over time:
     {% endfor %}
     " />
 
+    <!-- Rolling 7-->
+    {% assign rolling7Sum = 0 %}
+    {% assign x = 20 %}
+    <polyline fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" points="
+    {% for solution in sols %}
+        {% assign prevIndex = forloop.index0 | minus: 7 %}
+        {% assign rolling7Sum = rolling7Sum | plus: solution.attempts  %}
+        {% if prevIndex >= 0 %}
+            {% assign rolling7Sum = rolling7Sum | minus: sols[prevIndex].attempts  %}
+            {% assign y = rolling7Sum | divided_by: 7.0 | times: -50 | plus: 400 %}
+            {{ x }},{{ y }}
+            {% endif %}
+        {% assign x = x | plus: dx %}
+        {% if forloop.index == count %}
+        480, {{ y }}
+        {% endif %}
+    {% endfor %}
+    " />
 
+    <!-- Actual solves -->
     {% assign x = 20 %}
     <polyline fill="none" stroke="#f5793a" stroke-width="2" stroke-linecap="round" points="
     {% for solution in sols %}
@@ -137,3 +157,10 @@ Solutions over time:
         {% assign x = x | plus: dx %}
     {% endfor %}
 </svg>
+
+
+<strong><span style="color: blue">Blue line</span></strong> - rolling average of last 7 days
+
+<strong><span style="color: #6aaa64">Green line</span></strong> - global average trend
+
+<strong><span style="color: #f5793a">Orange line</span></strong> - actual solves

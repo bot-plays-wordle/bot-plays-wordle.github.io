@@ -131,9 +131,9 @@ Solutions over time:
         {% assign prevIndex = forloop.index0 | minus: 7 %}
         {% assign rolling7Sum = rolling7Sum | plus: solution.attempts  %}
         {% if prevIndex >= 0 %}
-            {% assign rolling7Sum = rolling7Sum | minus: sols[prevIndex].attempts  %}
             {% assign y = rolling7Sum | divided_by: 7.0 | times: -50 | plus: 400 %}
             {{ x }},{{ y }}
+            {% assign rolling7Sum = rolling7Sum | minus: sols[prevIndex].attempts  %}
             {% endif %}
         {% assign x = x | plus: dx %}
         {% if forloop.index == count %}

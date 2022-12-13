@@ -123,17 +123,21 @@ Solutions over time:
     {% endfor %}
     " />
 
-    <!-- Rolling 7-->
-    {% assign rolling7Sum = 0 %}
+    <!-- Rolling average -->
+    {% assign rollingSum = 0 %}
+    {% assign rollingLength = 7 %}
     {% assign x = 20 %}
     <polyline fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" points="
     {% for solution in sols %}
-        {% assign prevIndex = forloop.index0 | minus: 7 %}
-        {% assign rolling7Sum = rolling7Sum | plus: solution.attempts  %}
+        {% assign prevIndex = forloop.index0 | minus: rollingLength %}
+        {% assign rollingSum = rollingSum | plus: solution.attempts  %}
         {% if prevIndex >= 0 %}
-            {% assign y = rolling7Sum | divided_by: 7.0 | times: -50 | plus: 400 %}
+            {% assign rollingSum = rollingSum | minus: sols[prevIndex].attempts  %}
+            {% assign y = rollingSum | times: 1.0 | divided_by: rollingLength | times: -50 | plus: 400 %}
+            {% if prevIndex == 0 %}
+            20, {{ y }}
+            {% endif %}
             {{ x }},{{ y }}
-            {% assign rolling7Sum = rolling7Sum | minus: sols[prevIndex].attempts  %}
             {% endif %}
         {% assign x = x | plus: dx %}
         {% if forloop.index == count %}
@@ -153,13 +157,13 @@ Solutions over time:
     " />
     {% assign x = 20 %}
     {% for solution in sols %}
-        <circle cx="{{ x }}" cy="{{ solution.attempts | times: -50 | plus: 400 }}" r="3" fill="#f5793a" />
+        <circle cx="{{ x }}" cy="{{ solution.attempts | times: -50 | plus: 400 }}" r="2" fill="#f5793a" />
         {% assign x = x | plus: dx %}
     {% endfor %}
 </svg>
 
 
-<strong><span style="color: blue">Blue line</span></strong> - rolling average of last 7 days
+<strong><span style="color: blue">Blue line</span></strong> - rolling average of last {{ rollingLength }} days
 
 <strong><span style="color: #6aaa64">Green line</span></strong> - global average trend
 

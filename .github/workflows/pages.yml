@@ -36,7 +36,7 @@ jobs:
           destination: ./_site
       - name: Rename API
         run: |
-        mv ./_site/api/stats.html ./_site/api/stats.xml
+          mv ./_site/api/stats.html ./_site/api/stats.xml
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 

@@ -1,0 +1,7 @@
+{% assign solutions = site.solutions | sort: 'date' | reverse %}
+{% for solution in solutions limit: 1 %}
+<a href="{{ solution.url }}">{{ solution.title }}</a> - {% if solution.solved == true %}solved with <strong>{{ solution.attempts}}</strong> guesses{% else %}<strong>failed to solve</strong>{% endif %}
+<div class="ratio ratio-16x9">
+    <iframe src="{{ solution.video_link | replace: "youtu.be/", "youtube.com/embed/"}}/embed/AOInQvzQS2g?sub_confirmation=1"></iframe>
+</div>
+{% endfor %}

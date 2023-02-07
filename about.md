@@ -56,7 +56,7 @@ These were the things I did in the next few weeks to enhance the bot.
 
 In the end (or is it the end really?) I've got a bot that can solve Wordle with quite high win rate (by the way it's quite close to mine).
 
-Each night bot does the solve and publishes all artifacts to [Youtube](https://www.youtube.com/channel/UCHExvm1R3a7NFk5K89jUg7Q) channel and to this [site](https://www.botplayswordle.com).
+Each night bot does the solve and publishes all artifacts to [Youtube](https://www.youtube.com/@botplayswordle) channel and to this [site](https://www.botplayswordle.com).
 
 All the processes are fully automated and every morning I have a fresh video I can use to compare my and bot's solutions.
 

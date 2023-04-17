@@ -94,9 +94,10 @@ Solutions over time:
     <text x="0" y="350">1</text>
 
     {% assign x = 20 %}
-    {% assign prevGroup = sols[0].date | date: "%V" %}
+    {% assign groupSize = count | divided_by: 20 %}
+    {% assign prevGroup = 0 %}
     {% for solution in sols %}
-        {% assign group = solution.date | date: "%V" %}
+        {% assign group = forloop.index | divided_by: groupSize %}
         {% if prevGroup != group %}
         <line x1="{{ x }}" y1="40" x2="{{ x }}" y2="350" stroke="#86888a" stroke-width="1" stroke-dasharray="4"/>
         <text transform="translate({{ x }}, 360) rotate(90)">{{ solution.date | date: "%e %b" }}</text>
@@ -148,7 +149,7 @@ Solutions over time:
 
     <!-- Actual solves -->
     {% assign x = 20 %}
-    <polyline fill="none" stroke="#f5793a" stroke-width="2" stroke-linecap="round" points="
+    <polyline fill="none" stroke="#f5793a" stroke-width="2" stroke-linecap="round" stroke-opacity="65%" points="
     {% for solution in sols %}
         {% assign y = solution.attempts | times: -50 | plus: 400 %}
         {{ x }},{{ y }}
@@ -157,7 +158,7 @@ Solutions over time:
     " />
     {% assign x = 20 %}
     {% for solution in sols %}
-        <circle cx="{{ x }}" cy="{{ solution.attempts | times: -50 | plus: 400 }}" r="2" fill="#f5793a" />
+        <circle cx="{{ x }}" cy="{{ solution.attempts | times: -50 | plus: 400 }}" r="2" fill="#f5793a" fill-opacity="65%" />
         {% assign x = x | plus: dx %}
     {% endfor %}
 </svg>
